@@ -30,10 +30,9 @@ namespace TravelClient.Controllers
 
     [HttpPost]
     public IActionResult Rate(Rating rating)
-    {
-      int id = rating.PlaceId;      
+    {      
       Rating.Post(rating);
-      return RedirectToAction("Details", "Places", new{id = id});
+      return RedirectToAction("Details", "Places", new{id = rating.PlaceId});
     }
 
     public IActionResult Edit(int id)
@@ -54,7 +53,5 @@ namespace TravelClient.Controllers
     {
       Rating.DeleteRating(id);
       return RedirectToAction("Places/Details{placeId}");    }
-
-
   }
 }
