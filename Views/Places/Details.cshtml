@@ -11,9 +11,9 @@
   <h4>Description: @Html.DisplayFor(model => model.Description)</h4>
   <h4>Reviews:</h4>
 
-  @if (User.Identity.IsAuthenticated)
-  {
-    <ul>
+  @* @if (User.Identity.IsAuthenticated)
+  @* { *@
+  <ul>
     @foreach (Rating r in @ViewBag.Ratings)
     {
       <li>Stars: @r.Stars / 10</li>
@@ -23,10 +23,7 @@
       <li>@Html.ActionLink("Edit This Rating", "Edit", "Rate", new {id = r.RatingId})</li>
       } *@
     }
-    </ul>
-  }
-  else
-  {
+</ul>
     <ul>
     @foreach (Rating r in @ViewBag.Ratings)
     {
@@ -34,7 +31,7 @@
       <li>Comments: @r.Comments </li>
     }
     </ul>
-  }
+
 
   <p>@Html.ActionLink("Add A Rating", "Rate", "Ratings", new {id = Model.PlaceId})</p>
   <p>@Html.ActionLink("Delete Place", "Delete", new {id = Model.PlaceId})</p>

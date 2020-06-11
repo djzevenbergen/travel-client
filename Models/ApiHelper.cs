@@ -1,5 +1,4 @@
 using System.Threading.Tasks;
-using TravelClient;
 using RestSharp;
 
 namespace TravelClient.Models
