@@ -12,6 +12,7 @@ namespace TravelClient.Models
     public int PlaceId { get; set; }
     public int UserId { get; set; }
     public string Comments { get; set; }
+
     public static List<Rating> GetAll()
     {
       var apiCallTask = ApiHelper.GetAllRatings();
@@ -35,7 +36,7 @@ namespace TravelClient.Models
     public static void Post(Rating rating)
     {
       string jsonRating = JsonConvert.SerializeObject(rating);
-      var apiCallTask = ApiHelper.Post(jsonRating);
+      var apiCallTask = ApiHelper.PostRating(jsonRating);
     }
 
     public static void Put(Rating rating)

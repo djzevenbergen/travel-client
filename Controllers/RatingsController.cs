@@ -17,14 +17,24 @@ namespace TravelClient.Controllers
       return View(thisRating);
     }
 
-    [HttpPost]
-    public IActionResult Rate(int id, Rating rating)
+    public IActionResult Rate(int id)
     {
-      var thisPlace = Place.GetPlaces.Where(p => p.PlaceId == id);
-      ViewBag.Place = thisPlace;
+      var thisPlace = Place.GetPlaces().Where(p => p.PlaceId == id); 
+      foreach(Place p in thisPlace) 
+      {
+        ViewBag.City = p.City;
+        ViewBag.PlaceId = p.PlaceId;        
+      }
+      return View();
+    }
+
+    [HttpPost]
+    public IActionResult Rate(Rating rating)
+    {
+      int id = rating.PlaceId;      
       Rating.Post(rating);
-      return RedirectToAction("Places/{placeId}");
-    }  
+      return RedirectToAction("Details", "Places", new{id = id});
+    }
 
     public IActionResult Edit(int id)
     {
@@ -32,19 +42,18 @@ namespace TravelClient.Controllers
       return View(rating);
     }
 
-    [HttpPost]
-    public IActionResult Details(int id, Rating rating)
-    {
-      rating.RatingId = id;
-      Rating.Put(rating);
-      return RedirectToAction("Details", id);
-    }
+    // [HttpPost]
+    // public IActionResult Details(int id, Rating rating)
+    // {
+    //   rating.RatingId = id;
+    //   Rating.Put(rating);
+    //   return RedirectToAction("Details", id);
+    // }
 
     public IActionResult Delete(int id)
     {
-      Rating.Delete(id);
-      return RedirectToAction("Index");
-    }
+      Rating.DeleteRating(id);
+      return RedirectToAction("Places/Details{placeId}");    }
 
 
   }
