@@ -1,7 +1,8 @@
 @{
   Layout = "_Layout";
 }
-
+@using System.Security.Claims;
+@using Microsoft.AspNetCore.Identity;
 @model TravelClient.Models.Place;
 
 
@@ -9,10 +10,28 @@
   <h4>Country: @Html.DisplayFor(model => model.Country)</h4>
   <h4>Description: @Html.DisplayFor(model => model.Description)</h4>
   <h4>Reviews:</h4>
+
+  @* @if (User.Identity.IsAuthenticated)
+  @* { *@
   <ul>
-  @foreach (Rating r in @ViewBag.Ratings)
-  {
-    <li>Stars: @r.Stars / 10</li>
-    <li>Comments: @r.Comments </li>
-  }
-  </ul>
+    @foreach (Rating r in @ViewBag.Ratings)
+    {
+      <li>Stars: @r.Stars / 10</li>
+      <li>Comments: @r.Comments </li>
+      @* @if (User.Identity.GetUserId(User) == r.UserId)
+      {        
+      <li>@Html.ActionLink("Edit This Rating", "Edit", "Rate", new {id = r.RatingId})</li>
+      } *@
+    }
+</ul>
+    <ul>
+    @foreach (Rating r in @ViewBag.Ratings)
+    {
+      <li>Stars: @r.Stars / 10</li>
+      <li>Comments: @r.Comments </li>
+    }
+    </ul>
+
+
+  <p>@Html.ActionLink("Add A Rating", "Rate", "Ratings", new {id = Model.PlaceId})</p>
+  <p>@Html.ActionLink("Delete Place", "Delete", new {id = Model.PlaceId})</p>

@@ -2,21 +2,35 @@
   Layout = "_Layout";
 }
 
-<h1>All Places and Their Reviews:</h1>
+<h1>All Places:</h1>
+
+<div class = "form">
+<h3>Add A New Place</h3>
+
+<form action="/places" method="post">
+  <label for="city">City Name</label>
+  <input id="city" name="city" type="text">
+  <label for="country">Country</label>
+  <input id="country" name="country" type="text">
+  <label for="description">Description</label>
+  <input id="description" name="description" type="text">
+  <button type="submit">Go!</button>
+</form>
+</div>
+<hr>
 
 <ol>
 @foreach (Place place in Model)
 {
     <ul>
-        <li>ID: @place.PlaceId</li>
         <li>City: @place.City</li>
         <li>Country: @place.Country</li>
         <li>Description: @place.Description</li>
-        @* <li>Rating: @place.Rating</li> *@
-        @* imageurl *@
     </ul>
+
+
     <a href="/Places/Details/@(place.PlaceId)"><p>View Details</p></a>
-    <p>@Html.ActionLink("Add A Rating", "Ratings/Rate", new {id = Model.PlaceId})</p>
+    <p>@Html.ActionLink("Add A Rating", "Rate", "Ratings", new {id = place.PlaceId})</p>
     <br>
 }
 </ol>

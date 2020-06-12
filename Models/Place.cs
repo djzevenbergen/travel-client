@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -11,8 +10,9 @@ namespace TravelClient.Models
     public string City { get; set; }
     public string Country { get; set; }
     public string Description { get; set; }
-    public string ImageUrl { get; set; } 
-    
+    public string ImageUrl { get; set; }
+    public List<Rating> Ratings { get; set; } 
+
     public static List<Place> GetPlaces()
     {
       var apiCallTask = ApiHelper.GetAll();

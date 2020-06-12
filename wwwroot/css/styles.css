@@ -3,7 +3,6 @@
   background-color: #F2F2F2;
   color: #333;
   font-family: Baskerville;
-  text-align: center;
 }
 
 .container {
@@ -13,9 +12,18 @@
   padding-bottom: 2%;
 }
 
+ul
+{
+  list-style: none;
+}
+
 h1 { font-size: 32px;}
 h2 { font-size: 28px;}
 h3 { font-size: 22px;}
 h5 { font-size: 20px;}
 h6 { font-size: 18px;}
 p { font-size: 16px;}
+
+.form{
+  text-align: center;
+}

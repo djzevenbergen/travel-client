@@ -1,8 +1,9 @@
-using System;
+// using System;
+// using System.Diagnostics;
+// using System.Linq;
+// using System.Threading.Tasks;
+// using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TravelClient.Models;
 
@@ -10,6 +11,13 @@ namespace TravelClient.Controllers
 {
   public class PlacesController : Controller
   {
+    // private readonly UserManager<ApplicationUser> _userManager;
+
+    // public PlacesController(UserManager<ApplicationUser> userManager)
+    // {
+    //   _userManager = userManager;
+    // }
+    
     public IActionResult Index()
     {
       var allPlaces = Place.GetPlaces();
@@ -23,7 +31,6 @@ namespace TravelClient.Controllers
       return RedirectToAction("Index");
     }
 
-
     public IActionResult Details(int id)
     {
       var thisPlace = Place.GetDetails(id);
@@ -36,9 +43,8 @@ namespace TravelClient.Controllers
             ViewBag.Ratings.Add(r);
           }
         }
-      return View(thisPlace);
-    }
-
+      return View(thisPlace);   
+    }  
     public IActionResult Edit(int id)
     {
       var place = Place.GetDetails(id);
@@ -58,8 +64,5 @@ namespace TravelClient.Controllers
       Place.Delete(id);
       return RedirectToAction("Index");
     }
-    
-
-
   }
 }

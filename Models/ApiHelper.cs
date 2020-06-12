@@ -1,5 +1,4 @@
 using System.Threading.Tasks;
-using TravelClient;
 using RestSharp;
 
 namespace TravelClient.Models
@@ -53,6 +52,7 @@ namespace TravelClient.Models
       request.AddHeader("Content-Type", "application/json");
       var response = await client.ExecuteTaskAsync(request);
     }
+
     public static async Task<string> GetAllRatings()
         {
           RestClient client = new RestClient("http://localhost:5004/api");

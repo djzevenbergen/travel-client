@@ -1,0 +1,24 @@
+@{
+  Layout = "_Layout";
+}
+
+@model TravelClient.Models.Place;
+
+<div class = "form">
+<h3>Edit Details for @Html.DisplayFor(model => model.City)</h3>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.PlaceId)
+
+    @Html.LabelFor(model => model.City)
+    @Html.EditorFor(model => model.City)
+    <br>
+    @Html.LabelFor(model => model.Country)
+    @Html.EditorFor(model => model.Country)
+    <br>
+    @Html.LabelFor(model => model.Description)
+    @Html.EditorFor(model => model.Description)
+    
+    <input type="submit" value="Save" />
+}

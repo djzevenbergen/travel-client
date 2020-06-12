@@ -1,5 +1,3 @@
-using System;
-
 namespace TravelClient.Models
 {
     public class ErrorViewModel
